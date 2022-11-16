@@ -33,10 +33,7 @@ jobs:
         run: npm run prettier:check
    
       - name: Test
-        run: npm run test
-   
-      - name: E2E
-        run: npm run test:e2e
+        run: npm run test:unit
    
       - name: Build
         run: npm run build
