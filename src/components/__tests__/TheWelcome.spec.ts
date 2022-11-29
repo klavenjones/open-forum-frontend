@@ -1,7 +1,8 @@
-import { describe, it, expect, vi } from 'vitest';
-import { mount } from '@vue/test-utils';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { flushPromises, mount } from '@vue/test-utils';
 import TheWelcomeVue from '../TheWelcome.vue';
 import axios from 'axios';
+import { createVuetify } from 'vuetify/lib/framework.mjs';
 
 const mockUserList = [
   {
@@ -32,7 +33,9 @@ const mockUserList = [
 ];
 
 describe('TheWelcome.vue', async () => {
-  it('should load posts on button click', async () => {
+  const vuetify = createVuetify();
+
+  it('should load users on button click', async () => {
     vi.spyOn(axios, 'get').mockResolvedValue(mockUserList);
 
     const wrapper = mount(TheWelcomeVue);
@@ -41,5 +44,8 @@ describe('TheWelcome.vue', async () => {
 
     expect(axios.get).toHaveBeenCalledTimes(1);
     expect(axios.get).toHaveBeenCalledWith('http://localhost:3000/users');
+
+    // Wait until the DOM updates.
+    await flushPromises();
   });
 });
