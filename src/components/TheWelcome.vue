@@ -1,18 +1,23 @@
 <template>
-  <v-btn color="primary" class="mb-6" @click="getData()" data-test="user-btn"> Click for users </v-btn>
+  <v-btn color="primary" class="mb-6" @click="getUsers()" data-test="user-btn"> Click for users </v-btn>
   <div :key="user.id" v-for="user in users" data-test="users">
     <h1>{{ user.username }} <span v-if="user.isAdmin"> - Admin</span></h1>
   </div>
 </template>
 
-
-<script>
+<script lang="ts">
 import axios from 'axios';
+
+export interface User {
+  username: string;
+  isAdmin: boolean;
+  id: number;
+}
 
 export default {
   data() {
     return {
-      users: [],
+      users: [] as User[],
     };
   },
   methods: {
