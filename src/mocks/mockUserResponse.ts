@@ -26,7 +26,7 @@ export const mockUserResponse = [
   {
     id: 4,
     username: 'Arnold',
-    isAdmin: false,
+    isAdmin: true,
     createdAt: '2022-11-30T16:41:32.257Z',
     updatedAt: '2022-11-30T16:41:32.257Z',
     deletedAt: null,
