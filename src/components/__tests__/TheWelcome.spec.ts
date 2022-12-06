@@ -39,7 +39,7 @@ describe('TheWelcome.vue', async () => {
 
     const userList = await screen.findAllByRole('listitem');
 
-    userList.forEach((listitem, i) => {
+    userList.forEach(listitem => {
       if (listitem.innerHTML.includes('Admin')) adminCount++;
     });
 

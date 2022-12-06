@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import Signup from './components/Signup.vue';
-import TheWelcome from './components/TheWelcome.vue';
+import Signup from './components/SignUp.vue';
 </script>
 
 <template>

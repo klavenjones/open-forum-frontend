@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll, afterAll, afterEach } from 'vitest';
 import { cleanup, fireEvent, render, screen } from '@testing-library/vue';
-import Signup from '../Signup.vue';
+import SignUp from '../SignUp.vue';
 import { server } from '@/mocks/handlers';
 
 // Start server before all tests
@@ -17,7 +17,7 @@ afterEach(() => {
 
 describe('Signup.vue', async () => {
   it('should render a successful sign up', async () => {
-    render(Signup);
+    render(SignUp);
 
     const form = screen.getByRole('form');
     fireEvent.submit(form);

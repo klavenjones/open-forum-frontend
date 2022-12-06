@@ -3,7 +3,14 @@
     <v-card-title>Sign Up</v-card-title>
     <v-card-text>
       <v-form @submit.prevent="submitForm()" v-model="isValid" role="form">
-        <v-text-field label="Username" v-model="username" required :rules="usernameRules"></v-text-field>
+        <v-text-field
+          label="Username"
+          name="username"
+          role="input"
+          v-model="username"
+          required
+          :rules="usernameRules"
+        ></v-text-field>
         <v-text-field
           label="Password"
           v-model="password"
