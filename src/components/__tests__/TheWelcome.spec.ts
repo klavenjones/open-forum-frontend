@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeAll, afterAll, afterEach } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, afterEach } from 'vitest';
 import { cleanup, fireEvent, render, screen } from '@testing-library/vue';
 import TheWelcomeVue from '../TheWelcome.vue';
 import { server } from '@/mocks/handlers';
