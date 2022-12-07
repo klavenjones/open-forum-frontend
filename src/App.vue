@@ -4,10 +4,10 @@ import Signup from './components/SignUp.vue';
 
 <template>
   <v-content>
-    <v-tabs v-model="tab" centered>
+    <v-tabs centered>
       <v-tab> Sign Up </v-tab>
     </v-tabs>
-    <v-tabs-item v-model="tab">
+    <v-tabs-item>
       <v-tab-item>
         <Signup></Signup>
       </v-tab-item>
