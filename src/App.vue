@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Signup from './components/SignUp.vue';
+import SignUp from './components/SignUp.vue';
 </script>
 
 <template>
@@ -9,7 +9,7 @@ import Signup from './components/SignUp.vue';
     </v-tabs>
     <v-tabs-item>
       <v-tab-item>
-        <Signup></Signup>
+        <SignUp></SignUp>
       </v-tab-item>
     </v-tabs-item>
   </v-content>
