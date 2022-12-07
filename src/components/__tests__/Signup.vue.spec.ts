@@ -24,7 +24,7 @@ describe('SignUp.vue', () => {
     expect(title.text()).toBe('Sign Up');
   });
 
-  it('should render error messages when a user a user submits with no input', async () => {
+  it('should render error messages when a does not submit any input', async () => {
     const wrapper = mount(SignUp, {
       global: {
         plugins: [vuetify],
