@@ -1,48 +1,48 @@
-import { describe, it, expect, vi } from 'vitest';
-import { flushPromises, mount } from '@vue/test-utils';
+import { describe, it, expect, vi, beforeAll, afterAll, afterEach } from 'vitest';
+import { cleanup, fireEvent, render, screen } from '@testing-library/vue';
 import TheWelcomeVue from '../TheWelcome.vue';
-import axios from 'axios';
+import { server } from '@/mocks/handlers';
 
-const mockUserList = [
-  {
-    id: 1,
-    username: 'Klavenj',
-    isAdmin: false,
-  },
-  {
-    id: 2,
-    username: 'BillyJean',
-    isAdmin: false,
-  },
-  {
-    id: 5,
-    username: 'Anthony',
-    isAdmin: false,
-  },
-  {
-    id: 7,
-    username: 'Jeff',
-    isAdmin: false,
-  },
-  {
-    id: 8,
-    username: 'Grant',
-    isAdmin: true,
-  },
-];
+// Start server before all tests
+beforeAll(() => server.listen({ onUnhandledRequest: 'error' }));
+
+//  Close server after all tests
+afterAll(() => server.close());
+
+// Reset handlers after each test `important for test isolation`
+afterEach(() => {
+  server.resetHandlers();
+  cleanup();
+});
 
 describe('TheWelcome.vue', async () => {
-  it('should load users on button click', async () => {
-    vi.spyOn(axios, 'get').mockResolvedValue(mockUserList);
+  it('should render a list of users', async () => {
+    render(TheWelcomeVue);
 
-    const wrapper = mount(TheWelcomeVue);
+    const button = screen.getByRole('button');
+    fireEvent.click(button);
 
-    wrapper.get('[data-test="user-btn"]').trigger('click');
+    const userList = await screen.findAllByRole('listitem');
 
-    expect(axios.get).toHaveBeenCalledTimes(1);
-    expect(axios.get).toHaveBeenCalledWith('http://localhost:3000/users');
+    //Check first user
+    expect(userList.length).toBe(7);
+    expect(userList[0].innerHTML.includes('Caroline')).toBe(true);
+    expect(userList[0].innerHTML.includes('Admin')).toBe(false);
+  });
 
-    // Wait until the DOM updates.
-    await flushPromises();
+  it('should render a list containing Three Admins', async () => {
+    let adminCount = 0;
+    render(TheWelcomeVue);
+
+    const button = screen.getByRole('button');
+    await fireEvent.click(button);
+
+    const userList = await screen.findAllByRole('listitem');
+
+    userList.forEach((listitem, i) => {
+      if (listitem.innerHTML.includes('Admin')) adminCount++;
+    });
+
+    expect(adminCount).toBe(3);
   });
 });
