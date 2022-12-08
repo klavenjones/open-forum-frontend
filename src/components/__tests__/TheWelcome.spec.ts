@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeAll, afterAll, afterEach } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, afterEach } from 'vitest';
 import { cleanup, fireEvent, render, screen } from '@testing-library/vue';
 import TheWelcomeVue from '../TheWelcome.vue';
 import { server } from '@/mocks/handlers';
@@ -39,7 +39,7 @@ describe('TheWelcome.vue', async () => {
 
     const userList = await screen.findAllByRole('listitem');
 
-    userList.forEach((listitem, i) => {
+    userList.forEach((listitem) => {
       if (listitem.innerHTML.includes('Admin')) adminCount++;
     });
 
