@@ -5,24 +5,22 @@ export interface IAuthApiClient {
 }
 
 export class AuthApiClient implements IAuthApiClient {
-  baseUrl: string;
   authApiClient: IApiClient;
 
   constructor(authApiClient: IApiClient) {
-    this.baseUrl = 'http://localhost:3000';
     this.authApiClient = authApiClient;
   }
 
   async registerUser(username: string, password: string): Promise<any> {
     try {
-      const response = await this.authApiClient.post(`${this.baseUrl}/auth/register`, {
+      const response = await this.authApiClient.post(`/auth/register`, {
         username: username,
         password: password,
       });
 
       return response;
     } catch (error) {
-      console.log(error);
+      throw new Error('Something went wrong')
     }
   }
 }

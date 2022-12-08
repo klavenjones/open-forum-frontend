@@ -1,5 +1,4 @@
-import Axios from 'axios';
-import type { AxiosInstance } from 'axios';
+import type { AxiosStatic } from 'axios';
 
 export type HttpHeaders = {
   [key: string]: string;
@@ -21,21 +20,10 @@ export interface IApiClient {
 }
 
 export default class ApiClient implements IApiClient {
-  private client: AxiosInstance;
+  private client: AxiosStatic;
 
-  protected createAxiosClient(): AxiosInstance {
-    return Axios.create({
-      baseURL: 'http://localhost:3000',
-      responseType: 'json' as const,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      timeout: 10 * 1000,
-    });
-  }
-
-  constructor() {
-    this.client = this.createAxiosClient();
+  constructor(apiClient: AxiosStatic) {
+    this.client = apiClient;
   }
 
   async post<Request, Response>(path: string, body: Request, config?: RequestConfig | undefined): Promise<Response> {
