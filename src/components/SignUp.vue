@@ -17,7 +17,6 @@
       </v-form>
     </v-card-text>
   </v-card>
-  <h1 class="mt-6">Message: {{ message }}</h1>
 </template>
 
 <script lang="ts">
