@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    <v-card-title>Log in</v-card-title>
+    <v-card-title>Log In</v-card-title>
     <v-card-text>
       <v-form @submit.prevent="submitForm" v-model="isValid" role="form">
         <v-text-field label="Username" id="username" role="input" v-model="username" required :rules="usernameRules" />

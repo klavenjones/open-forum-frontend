@@ -18,7 +18,9 @@
     "axios": "^1.1.3",
     "typeorm": "^0.3.10",
     "vue": "^3.2.41",
-    "vuetify": "^3.0.1"
+    "vue-router": "^4.1.6",
+    "vuetify": "^3.0.1",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.4",

@@ -8,8 +8,10 @@
       >
     </v-app-bar>
 
-    <v-main>
-      <v-container>Dashboard</v-container>
+    <v-main width="w-full">
+      <v-container>
+        <h1>Dashboard</h1>
+      </v-container>
     </v-main>
   </v-app>
 </template>
