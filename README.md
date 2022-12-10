@@ -13,8 +13,8 @@ TypeScript cannot handle type information for `.vue` imports by default, so we r
 If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
 
 1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
+   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
+   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
 2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
 
 ## Customize configuration
@@ -65,4 +65,15 @@ npm run test:e2e
 
 ```sh
 npm run lint
+```
+
+## Environment Variables
+
+In order to set up the project a user will need to create an .env file in the root of the folder. A user can use the .env.example file for reference for which variables need to be set.
+
+For more info on environment variables in a Vue application with vite configuration check here: [Vite Environment](https://vitejs.dev/guide/env-and-mode.html)
+
+```sh
+
+VITE_API_BASE_URL=http://localhost:3000
 ```
