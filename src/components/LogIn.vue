@@ -21,12 +21,11 @@
 
 <script lang="ts">
 import { authService } from '@/api/services';
-
 export default {
   data() {
     return {
-      username: null,
-      password: null,
+      username: '',
+      password: '',
       isValid: false,
       passwordRules: [
         (verify: any) => !!verify || 'Password is required',
@@ -44,7 +43,11 @@ export default {
     async submitForm() {
       if (this.isValid) {
         try {
-          console.log(this.username, this.password);
+          const { message } = await authService.loginUser(this.username, this.password, {
+            withCredentials: true,
+            credentials: 'include',
+          });
+          alert(message);
         } catch (error) {
           console.log(error);
         }

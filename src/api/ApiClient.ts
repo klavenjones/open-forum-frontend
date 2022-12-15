@@ -5,7 +5,9 @@ export type HttpHeaders = {
 };
 
 export type RequestConfig = {
-  headers: HttpHeaders;
+  headers?: HttpHeaders;
+  withCredentials?: boolean;
+  credentials?: string;
 };
 
 export class ApiConfiguration {
