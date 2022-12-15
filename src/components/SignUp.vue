@@ -21,7 +21,6 @@
 
 <script lang="ts">
 import { authService } from '@/api/services';
-
 export default {
   data() {
     return {
@@ -31,14 +30,13 @@ export default {
       message: null,
       passwordRules: [
         (verify: any) => !!verify || 'Password is required',
-        (verify: string | any[]) => (verify && verify.length <= 64) || 'Password must be less than 20 characters',
+        (verify: string | any[]) => (verify && verify.length <= 64) || 'Password must be no more than 64 characters',
         (verify: string | any[]) => (verify && verify.length >= 8) || 'Password must have 8+ characters',
       ] as any,
       usernameRules: [
         (verify: any) => !!verify || 'Username is required',
+        (verify: string | any[]) => (verify && verify.length <= 30) || 'Username must be no more than 30 characters',
         (verify: string | any[]) => (verify && verify.length >= 6) || 'Username must have 6+ characters',
-        (verify: string | any[]) =>
-          (verify && verify.length <= 30) || 'Username must be less than or equal to 20 characters',
       ],
     };
   },
